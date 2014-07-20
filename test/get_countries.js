@@ -1,5 +1,5 @@
 var Lab = require("lab"),
-		Server = require("./test_srv"),
+		Server = require('./servers/getSrv'),
     fixtures = require('./fixtures'),
     headers = require('./fixtures/headers')
 
@@ -11,9 +11,6 @@ Lab.experiment("Get Countries", function() {
 
   Lab.before(function (done) {
     //don't drop previous inserted data
-    
-    Server.options[1].options.drop = false
-
     server = new Server.getServer()
 
     options.method = 'GET'
@@ -28,7 +25,8 @@ Lab.experiment("Get Countries", function() {
     done()
   })
 
-    Lab.test("Count Countries", function (done) {
+
+  Lab.test("Count Countries", function (done) {
     options.url = '/api/countries/count'
 
     server.inject(options, function(response) {

@@ -1,5 +1,5 @@
 var Lab = require("lab"),
-		Server = require("./test_srv"),
+		Server = require('./servers/getSrv'),
     fixtures = require('./fixtures'),
     headers = require('./fixtures/headers')
 
@@ -22,17 +22,7 @@ Lab.experiment("Path", function() {
     done()
   })
 
-  // Lab.test("Authentication Error", function (done) {
-  //   options = fixtures.load('path/methodForbidden')
 
-  //   server.inject(options, function(response) {
-
-  //     Lab.expect(response.statusCode).to.equal(401)
-
-  //     setTimeout(done, delay)
-    
-  //   })
-  // })
 
   Lab.test("notFound error", function (done) {
     options = fixtures.load('path/notFound', options)
@@ -46,17 +36,5 @@ Lab.experiment("Path", function() {
     })
 	})
 
-  // Lab.test("methodForbidden error", function (done) {
-  //   options = fixtures.load('path/methodForbidden', options)
-
-  //   server.inject(options, function(response) {
-  //     console.log(response)
-
-  //     Lab.expect(response.statusCode).to.equal(400)
-
-  //     setTimeout(done, delay)
-    
-  //   })
-  // })
 })
 

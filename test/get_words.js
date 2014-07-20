@@ -1,5 +1,5 @@
 var Lab = require("lab"),
-		Server = require("./test_srv"),
+		Server = require('./servers/getSrv'),
     fixtures = require('./fixtures'),
     headers = require('./fixtures/headers')
 
@@ -11,9 +11,6 @@ Lab.experiment("Get Words", function() {
 
   Lab.before(function (done) {
     //don't drop previous inserted data
-    
-    Server.options[1].options.drop = false
-
     server = new Server.getServer()
 
     options.method = 'GET'
@@ -138,7 +135,7 @@ Lab.experiment("Get Words", function() {
       Lab.expect(result).to.be.Object
       Lab.expect(result.result).to.be.Array
       Lab.expect(result.result[0].createdAt).to.be.ok
-      Lab.expect(result.result.length).to.equal(1)
+      Lab.expect(result.result.length).to.equal(2)
       Lab.expect(result.result[0].id).to.equal(2)
       setTimeout(done, delay)
     
@@ -162,6 +159,29 @@ Lab.experiment("Get Words", function() {
       Lab.expect(result.result[0].createdAt).to.be.ok
       Lab.expect(result.result.length).to.equal(2)
       Lab.expect(result.result[0].id).to.equal(2)
+      setTimeout(done, delay)
+    
+    })
+  })
+
+
+  Lab.test("All words wrong order", function (done) {
+    options.url = '/api/words?order=id AAAA'
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(400)    
+
+      var result = response.result
+
+      Lab.expect(result).to.be.Object
+      
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.validation).to.be.Object
+      Lab.expect(result.validation.source).to.be.equal('query')
+      Lab.expect(result.validation.keys).to.be.Array
+      Lab.expect(result.validation.keys[0]).to.be.equal('order')
+
       setTimeout(done, delay)
     
     })

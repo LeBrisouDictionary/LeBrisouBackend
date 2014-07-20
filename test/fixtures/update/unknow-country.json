@@ -1,0 +1,11 @@
+{
+	"method": "POST",
+  "url": "/api",
+  "payload": {
+  	"wordId": 1,
+    "countries": [{
+      "id" : 30,
+      "frequency": 20
+    }]
+  }
+}

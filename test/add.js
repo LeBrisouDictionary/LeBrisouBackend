@@ -1,5 +1,5 @@
 var Lab = require("lab"),
-		Server = require("./test_srv"),
+		Server = require("./servers/insertSrv"),
     fixtures = require('./fixtures'),
     headers = require('./fixtures/headers')
 
@@ -12,7 +12,6 @@ Lab.experiment("Add", function() {
   Lab.before(function (done) {
     server = new Server.getServer()
 
-
     options.headers = headers
     // Wait 1 second
     setTimeout(function () { done() }, 1000)
@@ -24,6 +23,7 @@ Lab.experiment("Add", function() {
     done()
   })
 
+  
   Lab.test("Ensure Correct word insertion without optional params", function (done) {
     options = fixtures.load('add/success-partial', options)
 

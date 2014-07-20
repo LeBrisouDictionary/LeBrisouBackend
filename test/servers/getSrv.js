@@ -16,34 +16,34 @@ module.exports = (function(){
 
 	options = [
 			{
-				'plugin': require('../plugins/hapi-sequelize'),
+				'plugin': require('../../plugins/hapi-sequelize'),
 				'options' : {
 	    		'dialect': 'sqlite',
-	    		"storage":  __dirname + '/test.sqlite',
+	    		"storage":  __dirname + '/../databases/LeBrisou.sqlite',
 	    		"logging": false,//console.log
 	    	}
 			},
 	    {
-	    	'plugin': require('../plugins/dictionary-rdbms'),
+	    	'plugin': require('../../plugins/dictionary-rdbms'),
 	    	"options" : {
-					"drop": true,
+					"drop": false,
 					'sync': {'force': true }
 				}
 			},
 	    {
-	    	'plugin': require('../plugins/dictionary-api'),
+	    	'plugin': require('../../plugins/dictionary-api'),
 			},
 			{
-	    	'plugin': require('../plugins/dictionary-error'),
+	    	'plugin': require('../../plugins/dictionary-error'),
 			},
 	  ]
 
 	
 	function getServer(){
 		if(server){
-			server.stop()
+			return server
 		}
-		server = new Hapi.Server('localhost', 8000);
+		server = new Hapi.Server('localhost', 8001);
 
 		server.pack.register(options, {
 	  	'route': {
@@ -55,12 +55,6 @@ module.exports = (function(){
 		   }
 		});
 
-		server.start(function(err){
-			if(err){
-				console.log('Error ', err)
-				process.exit(1)
-			}
-		})
 		return server
 	}
 

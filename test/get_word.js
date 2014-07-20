@@ -1,5 +1,5 @@
 var Lab = require("lab"),
-		Server = require("./test_srv"),
+		Server = require('./servers/getSrv'),
     fixtures = require('./fixtures'),
     headers = require('./fixtures/headers')
 
@@ -10,10 +10,7 @@ Lab.experiment("Get Word", function() {
       delay = 0
 
   Lab.before(function (done) {
-    //don't drop previous inserted data
-    
-    Server.options[1].options.drop = false
-
+    //switch to 2k word DB
     server = new Server.getServer()
 
     options.method = 'GET'
@@ -27,6 +24,8 @@ Lab.experiment("Get Word", function() {
     options.headers = headers
     done()
   })
+
+
 
     
   Lab.test("missing params", function (done) {
@@ -98,14 +97,122 @@ Lab.experiment("Get Word", function() {
       Lab.expect(result).to.be.Object
       Lab.expect(result.result).to.be.Array
       Lab.expect(result.result[0].createdAt).not.to.be.ok
-      Lab.expect(result.result.length).to.be.equal(2)
+      Lab.expect(result.result.length).to.be.equal(1)
       setTimeout(done, delay)
     
     })
   })
 
   Lab.test("Word by lema and gerund", function (done) {
-    options.url = '/api/word?lema=a&gerund=cultivando'
+    options.url = '/api/word?lema=abanderar&gerund=abanderando'
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(200)
+
+      var result = response.result
+      
+      Lab.expect(result).to.be.Object
+      Lab.expect(result.result).to.be.Array
+      Lab.expect(result.result[0].createdAt).not.to.be.ok
+      Lab.expect(result.result.length).to.be.equal(1)
+      setTimeout(done, delay)
+    
+    })
+  })
+
+  Lab.test("Word by lema and partial gerund", function (done) {
+    options.url = '/api/word?lema=abanderar&gerund=abander%'
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(200)
+
+      var result = response.result
+      
+      Lab.expect(result).to.be.Object
+      Lab.expect(result.result).to.be.Array
+      Lab.expect(result.result[0].createdAt).not.to.be.ok
+      Lab.expect(result.result.length).to.be.equal(1)
+      setTimeout(done, delay)
+    
+    })
+  })
+
+  Lab.test("Word by lema and participle", function (done) {
+    options.url = '/api/word?lema=abanderar&participle=abanderado'
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(200)
+
+      var result = response.result
+      
+      Lab.expect(result).to.be.Object
+      Lab.expect(result.result).to.be.Array
+      Lab.expect(result.result[0].createdAt).not.to.be.ok
+      Lab.expect(result.result.length).to.be.equal(1)
+      setTimeout(done, delay)
+    
+    })
+  })
+
+  Lab.test("Word by lema and partial participle", function (done) {
+    options.url = '/api/word?lema=abanderar&participle=%bandera%'
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(200)
+
+      var result = response.result
+      
+      Lab.expect(result).to.be.Object
+      Lab.expect(result.result).to.be.Array
+      Lab.expect(result.result[0].createdAt).not.to.be.ok
+      Lab.expect(result.result.length).to.be.equal(1)
+      setTimeout(done, delay)
+    
+    })
+  })
+
+  Lab.test("Word by lema and pos", function (done) {
+    options.url = '/api/word?lema=abanderar&pos=vt'
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(200)
+
+      var result = response.result
+      
+      Lab.expect(result).to.be.Object
+      Lab.expect(result.result).to.be.Array
+      Lab.expect(result.result[0].createdAt).not.to.be.ok
+      Lab.expect(result.result.length).to.be.equal(1)
+      setTimeout(done, delay)
+    
+    })
+  })
+
+  Lab.test("Word by lema and totally partial pos", function (done) {
+    options.url = '/api/word?lema=abanderar&pos=%'
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(200)
+
+      var result = response.result
+      
+      Lab.expect(result).to.be.Object
+      Lab.expect(result.result).to.be.Array
+      Lab.expect(result.result[0].createdAt).not.to.be.ok
+      Lab.expect(result.result.length).to.be.equal(1)
+      setTimeout(done, delay)
+    
+    })
+  })
+
+   Lab.test("Word by lema and participle and gerund and pos", function (done) {
+    options.url = '/api/word?lema=abanderar&pos=vt&gerund=abanderando&participle=abanderado'
 
     server.inject(options, function(response) {
 

@@ -1,5 +1,5 @@
 var Lab = require("lab"),
-    Server = require("./test_srv"),
+    Server = require('./servers/insertSrv'),
     fixtures = require('./fixtures'),
     headers = require('./fixtures/headers')
 
@@ -10,7 +10,8 @@ Lab.experiment("Update", function() {
       delay = 0
 
   Lab.before(function (done) {
-    Server.options[1].options.drop = false 
+     
+    Server.options[1].options.drop = false
     
     server = new Server.getServer()
 
@@ -113,6 +114,21 @@ Lab.experiment("Update", function() {
 
       Lab.expect(result).to.be.Object
       Lab.expect(result).to.be.deep.equal(options.payload)
+      setTimeout(done, delay)
+    
+    })
+  })
+
+  Lab.test("Unknow Country", function(done) {
+    options = fixtures.load('update/unknow-country', options)
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(20003)
+
+      var result = response.result
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Unknown Country')
       setTimeout(done, delay)
     
     })
