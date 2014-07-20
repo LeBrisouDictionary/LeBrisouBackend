@@ -229,4 +229,22 @@ Lab.experiment("Get Word", function() {
     })
   })
 
+   Lab.test("Word by partial lema and limit", function (done) {
+    options.url = '/api/word?lema=ab%&limit=23'
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(200)
+
+      var result = response.result
+      
+      Lab.expect(result).to.be.Object
+      Lab.expect(result.result).to.be.Array
+      Lab.expect(result.result[0].createdAt).not.to.be.ok
+      Lab.expect(result.result.length).to.be.equal(23)
+      setTimeout(done, delay)
+    
+    })
+  })
+
 })
