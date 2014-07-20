@@ -2,8 +2,8 @@
   "method": "PUT",
   "url": "/api",
   "payload": {
-  	"lema" : "Cazpdokapozdk",
-		"pos" : "preoijp",
+  	"lema" : "d",
+		"pos" : "prep",
     "gerund": "tatando",
     "participle": "tata",
 		"countries": [{
@@ -15,9 +15,20 @@
         "frequency": 30
       }],
 		"language": "Spanish",
-		"antonyms": [{
-			"lema": "DDDDDDDDDDDDDDD",
-			"pos": "qsdqd"
-			}]
+		"definitions": [
+    {
+			"definition": "test 6 definition",
+      "examples": [
+        "test 5",
+        "test 5"
+      ]
+		},
+    {
+      "definition": "test 7 definition",
+      "examples": [
+        "test 5",
+        "test 5"
+      ]
+    }]
   }
 }

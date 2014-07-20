@@ -2,10 +2,10 @@
   "method": "PUT",
   "url": "/api",
   "payload": {
-      "lema": "a",
+      "lema": "j",
       "pos": "prep",
-      "gerund": "cultivando",
-      "participle": "cultivado",
+      "gerund": "tata",
+      "participle": "toto",
       "countries": [{
         "country" : "Spain",
         "frequency": 10
@@ -18,13 +18,13 @@
       "language": "Spanish",
       "definitions": [
         {
-          "definition": "Trabajar la tierra para obtener productos agrícolas con mayor rendimiento del que dan naturalmente",
+          "definition": "test definitions",
           "examples": [
             "test example"
           ]
         },
         {
-          "definition": "Criar animales con medios análagos, especialmente para su explotación comercial",
+          "definition": "test 2 definitions",
           "examples": [
             "test 2 example",
             "test 3 example"

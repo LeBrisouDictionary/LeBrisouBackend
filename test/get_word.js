@@ -104,8 +104,8 @@ Lab.experiment("Get Word", function() {
     })
   })
 
-  Lab.test("Word by lema and pos", function (done) {
-    options.url = '/api/word?lema=a&pos=v'
+  Lab.test("Word by lema and gerund", function (done) {
+    options.url = '/api/word?lema=a&gerund=cultivando'
 
     server.inject(options, function(response) {
 

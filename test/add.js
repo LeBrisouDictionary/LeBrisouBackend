@@ -56,6 +56,37 @@ Lab.experiment("Add", function() {
     })
 	})
 
+  Lab.test("Raise duplicate word", function (done) {
+    options = fixtures.load('add/success', options)
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(20053)
+
+      var result = response.result
+      
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Word already exists')
+      setTimeout(done, delay)
+    
+    })
+  })
+
+  Lab.test("Raise wrong gerund pattern", function (done) {
+    options = fixtures.load('add/wrong-gerund', options)
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(400)
+
+      var result = response.result
+      
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      setTimeout(done, delay)
+    
+    })
+  })
+
   
 
   Lab.test("Raise Unknow Language", function (done) {
@@ -98,10 +129,11 @@ Lab.experiment("Add", function() {
     server.inject(options, function(response) {
       
 
-      Lab.expect(response.statusCode).to.equal(19)
+      Lab.expect(response.statusCode).to.equal(20056)
 
       var result = response.result
-      
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Hyperlink already exists')
       setTimeout(done, delay)
     
     })
@@ -113,10 +145,30 @@ Lab.experiment("Add", function() {
     server.inject(options, function(response) {
       
 
-      Lab.expect(response.statusCode).to.equal(19)
+      Lab.expect(response.statusCode).to.equal(20054)
 
       var result = response.result
       
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Definition already exists')
+
+      setTimeout(done, delay)
+    
+    })
+  })
+
+  Lab.test("Raise duplicate example", function (done) {
+    options = fixtures.load('add/duplicate-example', options)
+
+    server.inject(options, function(response) {
+      
+
+      Lab.expect(response.statusCode).to.equal(20055)
+
+      var result = response.result
+      
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Example already exists')
 
       setTimeout(done, delay)
     
@@ -133,7 +185,26 @@ Lab.experiment("Add", function() {
 
       var result = response.result
       
+      
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Unknown Synonym')
 
+      setTimeout(done, delay)
+    
+    })
+  })
+
+  Lab.test("Raise word equal synonym", function (done) {
+    options = fixtures.load('add/word-equal-synonym', options)
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(20050)
+
+      var result = response.result
+      
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Conflict : SynonymId equal WordId')
       setTimeout(done, delay)
     
     })
@@ -149,7 +220,60 @@ Lab.experiment("Add", function() {
 
       var result = response.result
       
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Unknown Antonym')
 
+      setTimeout(done, delay)
+    
+    })
+  })
+
+  Lab.test("Raise word equal antonym", function (done) {
+    options = fixtures.load('add/word-equal-antonym', options)
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(20051)
+
+      var result = response.result
+      
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Conflict : AntonymId equal WordId')
+      setTimeout(done, delay)
+    
+    })
+  })
+
+  Lab.test("Raise unknow relative", function (done) {
+    options = fixtures.load('add/unknow-relative', options)
+
+    server.inject(options, function(response) {
+      
+
+      Lab.expect(response.statusCode).to.equal(20007)
+
+      var result = response.result
+
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Unknown Relative')
+      
+
+      setTimeout(done, delay)
+    
+    })
+  })
+
+  Lab.test("Raise word equal relative", function (done) {
+    options = fixtures.load('add/word-equal-relative', options)
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(20052)
+
+      var result = response.result
+      
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Conflict : RelativeId equal WordId')
       setTimeout(done, delay)
     
     })

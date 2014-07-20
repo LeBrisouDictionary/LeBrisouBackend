@@ -2,9 +2,9 @@
   "method": "PUT",
   "url": "/api",
   "payload": {
-  	"lema" : "h",
-		"pos" : "v",
-    "gerund" : "tatando",
+  	"lema" : "f",
+		"pos" : "prep",
+    "gerund": "tataando",
     "participle": "tata",
 		"countries": [{
         "country" : "Spain",
@@ -15,12 +15,9 @@
         "frequency": 30
       }],
 		"language": "Spanish",
-		"definitions": [{
-			"definition": "test 5 definition"
-		}],
-		"hyperlinks": [
-			"http://fr.wiktionary.org/wiki/bouc_%C3%A9missaire",
-			"http://fr.wiktionary.org/wiki/bouc_%C3%A9missaire"
-		]
+		"antonyms": [{
+			"lema": "f",
+			"pos": "prep"
+			}]
   }
 }

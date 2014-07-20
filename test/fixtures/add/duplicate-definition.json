@@ -2,10 +2,10 @@
   "method": "PUT",
   "url": "/api",
   "payload": {
-  	"lema" : "c",
-		"pos" : "prep",
-    "gerund": "tata",
-    "participle": "tata",
+  	"lema" : "cultivar",
+		"pos" : "vt",
+    "gerund": "cultivando",
+    "participle": "cultivado",
 		"countries": [{
         "country" : "Spain",
         "frequency": 10
@@ -16,10 +16,10 @@
       }],
 		"language": "Spanish",
 		"definitions": [{
-			"definition": "test 6 definition"
+			"definition": "Trabajar la tierra para obtener productos agrícolas con mayor rendimiento del que dan naturalmente"
 		},
 		{
-			"definition": "test 6 definition"
+			"definition": "Trabajar la tierra para obtener productos agrícolas con mayor rendimiento del que dan naturalmente"
 		}]
   }
 }

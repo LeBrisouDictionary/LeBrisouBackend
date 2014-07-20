@@ -35,9 +35,11 @@ Lab.experiment("Update", function() {
       Lab.expect(response.statusCode).to.equal(200)
 
       var result = response.result
-      var payload = options.payload
       
-      Lab.expect(result.success).to.be.true
+      options.payload.success = true
+
+      Lab.expect(result).to.be.Object
+      Lab.expect(result).to.be.deep.equal(options.payload)
       setTimeout(done, delay)
     
     })
@@ -51,9 +53,13 @@ Lab.experiment("Update", function() {
       Lab.expect(response.statusCode).to.equal(200)
 
       var result = response.result
-      var payload = options.payload
       
-      Lab.expect(result.success).to.be.true
+      options.payload.success = true
+
+      Lab.expect(result).to.be.Object
+      Lab.expect(result).to.be.deep.equal(options.payload)
+      
+
       setTimeout(done, delay)
     
     })
@@ -67,13 +73,33 @@ Lab.experiment("Update", function() {
       Lab.expect(response.statusCode).to.equal(20002)
 
       var result = response.result
-      var payload = options.payload
       
       Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Unknown Definition')
+
       setTimeout(done, delay)
     
     })
   })
+
+  Lab.test("Definition and Example not found", function(done) {
+    options = fixtures.load('update/definition-unknow-examples', options)
+
+    server.inject(options, function(response) {
+
+      Lab.expect(response.statusCode).to.equal(20006)
+
+      var result = response.result
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Unknown Example')
+
+      
+      
+      setTimeout(done, delay)
+    
+    })
+  })
+
 
   Lab.test("Countries", function(done) {
     options = fixtures.load('update/countries', options)
@@ -83,9 +109,10 @@ Lab.experiment("Update", function() {
       Lab.expect(response.statusCode).to.equal(200)
 
       var result = response.result
-      var payload = options.payload
-      
-      Lab.expect(result.success).to.be.true
+      options.payload.success = true
+
+      Lab.expect(result).to.be.Object
+      Lab.expect(result).to.be.deep.equal(options.payload)
       setTimeout(done, delay)
     
     })
@@ -99,9 +126,10 @@ Lab.experiment("Update", function() {
       Lab.expect(response.statusCode).to.equal(200)
 
       var result = response.result
-      var payload = options.payload
-      
-      Lab.expect(result.success).to.be.true
+      options.payload.success = true
+
+      Lab.expect(result).to.be.Object
+      Lab.expect(result).to.be.deep.equal(options.payload)
       setTimeout(done, delay)
     
     })
@@ -115,9 +143,10 @@ Lab.experiment("Update", function() {
       Lab.expect(response.statusCode).to.equal(20008)
 
       var result = response.result
-      var payload = options.payload
       
       Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Unknown Hyperlink')
+
       setTimeout(done, delay)
     
     })
@@ -132,11 +161,11 @@ Lab.experiment("Update", function() {
       Lab.expect(response.statusCode).to.equal(200)
 
       var result = response.result
-      var payload = options.payload
-      
-      Lab.expect(result.success).to.be.true
+      options.payload.success = true
+
+      Lab.expect(result).to.be.Object
+      Lab.expect(result).to.be.deep.equal(options.payload)
       setTimeout(done, delay)
-    
     })
   })
 
@@ -148,9 +177,9 @@ Lab.experiment("Update", function() {
       Lab.expect(response.statusCode).to.equal(20001)
 
       var result = response.result
-      var payload = options.payload
       
       Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Unknown Language')
       setTimeout(done, delay)
     
     })
@@ -164,9 +193,9 @@ Lab.experiment("Update", function() {
       Lab.expect(response.statusCode).to.equal(20004)
 
       var result = response.result
-      var payload = options.payload
       
       Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Unknown Synonym')
       setTimeout(done, delay)
     
     })
@@ -180,9 +209,10 @@ Lab.experiment("Update", function() {
       Lab.expect(response.statusCode).to.equal(200)
 
       var result = response.result
-      var payload = options.payload
-      
-      Lab.expect(result.success).to.be.true
+      options.payload.success = true
+
+      Lab.expect(result).to.be.Object
+      Lab.expect(result).to.be.deep.equal(options.payload)
       setTimeout(done, delay)
     
     })
@@ -193,12 +223,12 @@ Lab.experiment("Update", function() {
 
     server.inject(options, function(response) {
 
-      Lab.expect(response.statusCode).to.equal(20004)
+      Lab.expect(response.statusCode).to.equal(20007)
 
       var result = response.result
-      var payload = options.payload
-      
+    
       Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Unknown Relative')
       setTimeout(done, delay)
     
     })
@@ -212,43 +242,45 @@ Lab.experiment("Update", function() {
       Lab.expect(response.statusCode).to.equal(200)
 
       var result = response.result
+      options.payload.success = true
 
-      
-      Lab.expect(result.success).to.be.true
+      Lab.expect(result).to.be.Object
+      Lab.expect(result).to.be.deep.equal(options.payload)
       setTimeout(done, delay)
     
     })
   })
 
-  // Lab.test("Unknow Antonym", function(done) {
-  //   options = fixtures.load('update/unknow-antonym')
+  Lab.test("Unknow Antonym", function(done) {
+    options = fixtures.load('update/unknow-antonym')
 
-  //   server.inject(options, function(response) {
+    server.inject(options, function(response) {
 
-  //     Lab.expect(response.statusCode).to.equal(20005)
+      Lab.expect(response.statusCode).to.equal(20005)
 
-  //     var result = response.result
-  //     var payload = options.payload
+      var result = response.result
       
-  //     Lab.expect(result.error).to.be.true
-  //     setTimeout(done, delay)
+      Lab.expect(result.error).to.be.equal('Bad Request')
+      Lab.expect(result.message).to.be.equal('Unknown Antonym')
+      setTimeout(done, delay)
     
-  //   })
-  // })
+    })
+  })
 
-  // Lab.test("Antonym", function(done) {
-  //   options = fixtures.load('update/antonym')
+  Lab.test("Antonym", function(done) {
+    options = fixtures.load('update/antonym')
 
-  //   server.inject(options, function(response) {
+    server.inject(options, function(response) {
 
-  //     Lab.expect(response.statusCode).to.equal(200)
+      Lab.expect(response.statusCode).to.equal(200)
 
-  //     var result = response.result
-  //     var payload = options.payload
-      
-  //     Lab.expect(result.success).to.be.true
-  //     setTimeout(done, delay)
+      var result = response.result
+      options.payload.success = true
+
+      Lab.expect(result).to.be.Object
+      Lab.expect(result).to.be.deep.equal(options.payload)
+      setTimeout(done, delay)
     
-  //   })
-  // })
+    })
+  })
 })
