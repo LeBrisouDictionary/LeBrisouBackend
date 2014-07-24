@@ -48,22 +48,22 @@ Lab.experiment("Get Random Word", function() {
     })
   })
 
-  Lab.test("Random Word and extended", function (done) {
-    options.url = '/api/word/random?extended=true'
+  // Lab.test("Random Word and extended", function (done) {
+  //   options.url = '/api/word/random?extended=true'
 
-    server.inject(options, function(response) {
+  //   server.inject(options, function(response) {
 
-      Lab.expect(response.statusCode).to.equal(200)
+  //     Lab.expect(response.statusCode).to.equal(200)
 
-      var result = response.result
+  //     var result = response.result
 
-      
-      Lab.expect(result).to.be.Object
-      Lab.expect(result.result).to.be.Object
-      Lab.expect(result.result.createdAt).to.be.ok
-      setTimeout(done, delay)
-    
-    })
-  })
+
+  //     Lab.expect(result).to.be.Object
+  //     Lab.expect(result.result).to.be.Object
+  //     Lab.expect(result.result.createdAt).to.be.ok
+  //     setTimeout(done, delay)
+
+  //   })
+  // })
 
 })

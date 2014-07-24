@@ -27,8 +27,8 @@
   "scripts": {
     "start-dev-front": " supervisor --extensions node,json nodejs app.js",
     "start-dev": " supervisor --extensions node,js,json nodejs app.js",
-    "start": "config='/config/config-prod' forever app.js",
-    "test": "lab -C -v",
+    "start": "forever app.js",
+    "test": "lab  -I dialect -C -v",
     "test-add": "lab -C -v -g Add",
     "test-dev": " lab -C -v",
     "test-update-dev": " lab -g Update -C -v",
@@ -43,9 +43,7 @@
     "bluebird": "~2.2.2",
     "tv": "~2.0.0",
     "good": "~2.1.2",
-    "catbox-redis": "~1.0.3",
-    "redis": "~0.11.0",
-    "jade": "~1.4.2"
+    "redis": "~0.11.0"
   },
   "devDependencies": {
     "supervisor": "0.6.x",

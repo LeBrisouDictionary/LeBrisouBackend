@@ -2,7 +2,7 @@
   "method": "PUT",
   "url": "/api",
   "payload": {
-    "lema": "a",
+    "lema": "r",
     "pos": "v",
     "countries": [{
       "country": "Spain",
@@ -10,9 +10,9 @@
     }],
     "language": "Spanish",
     "definitions": [{
-      "definition": "test 3 definition"
+      "definition": "test 10 definition"
     }, {
-      "definition": "test 4 definition"
+      "definition": "test 19 definition"
     }]
   }
 }

@@ -2,11 +2,11 @@
   "method": "POST",
   "url": "/api",
   "payload": {
-    "wordId": 3,
-    "antonyms": [{
+    "wordId": 1,
+    "relatives": [{
       "id": 1,
       "lema": "a",
-      "pos": "v "
+      "pos": "v"
     }]
   }
 }

@@ -3,7 +3,7 @@
   "url": "/api",
   "payload": {
   	"wordId": 1,
-  	"relatives": [{
+  	"antonyms": [{
   		"id": 1,
   		"lema": "a",
   		"pos": "v "
