@@ -10,9 +10,11 @@
     }],
     "language": "Spanish",
     "definitions": [{
-      "definition": "test 3 definition"
-    }, {
-      "definition": "test 4 definition"
+      "definition": "m dolor sit amet, consectetur adipiscing elit. Integer dignissim aliquam nunc, laoreet viverra dui accumsan in. Vivamus nec egestas ipsum, quis molestie orci. Nulla facilisi. Nunc quis condimentum quam. Duis vitae augue id tortor faucibus accumsan. Quisque vitae libero sit amet tortor porta bibendum sit amet ut turpis. Morbi at est porta, lobortis odio vel, tincidunt lacus. Suspendisse viverra viverra nisi, sit amet volutpat justo euismod sed. Etiam eu nisl et leo sagittis ultricies. Vestibulum eget eros id felis auctor ornare. Suspendisse non egestas dui. Nam tempus laoreet malesuada. Nulla vitae tortor nibh.",
+      "examples": [
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim aliquam nunc, laoreet viverra dui accumsan in. Vivamus nec egestas ipsum, quis molestie orci. Nulla facilisi. Nunc quis condimentum quam. Duis vitae augue id tortor faucibus accumsan. Quisque vitae libero sit amet tortor porta bibendum sit amet ut turpis. Morbi at est porta, lobortis odio vel, tincidunt lacus. Suspendisse viverra viverra nisi, sit amet volutpat justo euismod sed. Etiam eu nisl et leo sagittis ultricies. Vestibulum eget eros id felis auctor ornare. Suspendisse non egestas dui. Nam tempus laoreet malesuada. Nulla vitae tortor nibh.",
+            "ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim aliquam nunc, laoreet viverra dui accumsan in. Vivamus nec egestas ipsum, quis molestie orci. Nulla facilisi. Nunc quis condimentum quam. Duis vitae augue id tortor faucibus accumsan. Quisque vitae libero sit amet tortor porta bibendum sit amet ut turpis. Morbi at est porta, lobortis odio vel, tincidunt lacus. Suspendisse viverra viverra nisi, sit amet volutpat justo euismod sed. Etiam eu nisl et leo sagittis ultricies. Vestibulum eget eros id felis auctor ornare. Suspendisse non egestas dui. Nam tempus laoreet malesuada. Nulla vitae tortor nibh."
+      ]
     }]
   }
 }

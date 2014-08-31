@@ -13,7 +13,7 @@ module.exports = {
     }
   },
   servers: [{
-    port: 8081,
+    port: process.env.PORT,
     // host : dic.local,
     options: {
       // tls: {
@@ -26,12 +26,12 @@ module.exports = {
         request: ['error', 'uncaught', 'log']
       }
     }
-  }, {
+  }/*, {
     port: 8080,
     options: {
       labels: 'dictionary-web',
     }
-  }],
+  }*/],
   plugins: {
     '../../../node_modules/good': [{
       options: {
@@ -61,7 +61,7 @@ module.exports = {
         sync: {
           force: true
         },
-        logging: false, //console.log,
+        logging: console.log,
         maxConcurrentQueries: 1,
         native: true,
         define: {

@@ -16,7 +16,7 @@ Lab.experiment("Add", function () {
     // Wait 1 second
     setTimeout(function () {
       done()
-    }, 1000)
+    }, 3000)
   })
 
   Lab.beforeEach(function (done) {
@@ -41,7 +41,23 @@ Lab.experiment("Add", function () {
 
     })
   })
+  
+  
+  Lab.test("Ensure Correct word insertion without optional params 2", function (done) {
+    options = fixtures.load('add/success-partial-2', options)
 
+    server.inject(options, function (response) {
+
+      Lab.expect(response.statusCode).to.equal(200)
+
+      var result = response.result
+
+
+      Lab.expect(result.success).to.be.true
+      setTimeout(done, delay)
+
+    })
+  })
 
 
   Lab.test("Ensure Correct word insertion with all params", function (done) {
@@ -60,21 +76,7 @@ Lab.experiment("Add", function () {
     })
   })
 
-  Lab.test("Ensure Correct word insertion without optional params 2", function (done) {
-    options = fixtures.load('add/success-partial-2', options)
-
-    server.inject(options, function (response) {
-
-      Lab.expect(response.statusCode).to.equal(200)
-
-      var result = response.result
-
-
-      Lab.expect(result.success).to.be.true
-      setTimeout(done, delay)
-
-    })
-  })
+ 
 
   Lab.test("Raise duplicate word", function (done) {
     options = fixtures.load('add/success', options)
