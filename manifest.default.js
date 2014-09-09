@@ -13,25 +13,27 @@ module.exports = {
     }
   },
   servers: [{
-    port: 8080,
-    // host : dic.local,
-    options: {
-      // tls: {
-      //   key: fs.readFileSync( __dirname + /plugins/dictionary-api/cert/+domain+.key),
-      //   cert: fs.readFileSync(__dirname + /plugins/dictionary-api/cert/+domain+.crt)
-      // },
-      labels: 'dictionary-api',
-      cors: true,
-      debug: {
-        request: ['error', 'uncaught', 'log']
+      port: process.env.PORT,
+      // host : dic.local,
+      options: {
+        // tls: {
+        //   key: fs.readFileSync( __dirname + /plugins/dictionary-api/cert/+domain+.key),
+        //   cert: fs.readFileSync(__dirname + /plugins/dictionary-api/cert/+domain+.crt)
+        // },
+        labels: 'dictionary-api',
+        cors: true,
+        debug: {
+          request: ['error', 'uncaught', 'log']
+        }
       }
     }
-  }, {
-    port: 8081,
+    /*, {
+    port: 8080,
     options: {
       labels: 'dictionary-web',
     }
-  }],
+  }*/
+  ],
   plugins: {
     '../../../node_modules/good': [{
       options: {
