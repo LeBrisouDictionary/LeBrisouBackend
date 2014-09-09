@@ -113,6 +113,6 @@ module.exports = {
       },
       select: ['dictionary-api']
     }],
-    '../../../plugins/dictionary-error': [{}],
+    '../../../plugins/hapi-errors': [{}],
   }
 }

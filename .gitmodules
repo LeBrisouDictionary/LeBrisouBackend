@@ -1,18 +1,18 @@
 [submodule "plugins/dictionary-parser"]
 	path = plugins/dictionary-parser
-	url = git@github.com:amaurybrisou/dictionary-parser.git
+	url = https://github.com/LeBrisouDictionary/dictionary-parser.git
 [submodule "plugins/dictionary-error"]
 	path = plugins/dictionary-error
-	url = git@github.com:amaurybrisou/dictionary-error.git
+	url = https://github.com/nodejs-js-amaurybrisou/hapi-errors.git
 [submodule "plugins/dictionary-api"]
 	path = plugins/dictionary-api
-	url = git@github.com:amaurybrisou/dictionary-api.git
+	url = https://github.com/LeBrisouDictionary/dictionary-api.git
 [submodule "plugins/dictionary-web"]
 	path = plugins/dictionary-web
-	url = git@github.com:amaurybrisou/dictionary-web.git
+	url = https://github.com/LeBrisouDictionary/dictionary-web.git
 [submodule "plugins/hapi-sequelize"]
 	path = plugins/hapi-sequelize
-	url = git@github.com:amaurybrisou/hapi-sequelize.git
+	url = https://github.com/nodejs-js-amaurybrisou/hapi-sequelize.git
 [submodule "plugins/dictionary-rdbms"]
 	path = plugins/dictionary-rdbms
-	url = git@github.com:amaurybrisou/dictionary-rdbms.git
+	url = https://github.com/LeBrisouDictionary/dictionary-rdbms.git
