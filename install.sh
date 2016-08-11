@@ -24,6 +24,9 @@ do
 	echo "# cd ${dir}"
 	cd $PLUGINS_DIR/$dir 
 	echo "# into ${PLUGINS_DIR}/${dir}"
+	echo "# git reset --hard && pull" 
+	git reset --hard
+	git pull origin master
 	echo "# npm install"
 	npm install
 	echo "# cd .."

@@ -99,13 +99,13 @@ module.exports = {
         //vhost : dic.local
       }
     }],
-    '../../../plugins/dictionary-web': [{
-      options: {
-        sitename: 'LeBrisouBackend',
-        author: 'Amaury Brisou'
-      },
-      select: ['dictionary-web']
-    }],
+    // '../../../plugins/dictionary-web': [{
+    //   options: {
+    //     sitename: 'LeBrisouBackend',
+    //     author: 'Amaury Brisou'
+    //   },
+    //   select: ['dictionary-web']
+    // }],
     '../../../plugins/dictionary-parser': [{
       options: {
         inject: false,

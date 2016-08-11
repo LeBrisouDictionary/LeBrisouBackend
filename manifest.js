@@ -16,10 +16,11 @@ module.exports = {
     port: 8080,
     // host : dic.local,
     options: {
-      // tls: {
-      //   key: fs.readFileSync( __dirname + /plugins/dictionary-api/cert/+domain+.key),
+      //tls: {
+      //key: fs.readFileSync(__dirname + /plugins/dictionary - api / cert / +domain + .key),
       //   cert: fs.readFileSync(__dirname + /plugins/dictionary-api/cert/+domain+.crt)
-      // },
+
+      //},
       labels: 'dictionary-api',
       cors: true,
       debug: {
@@ -28,7 +29,9 @@ module.exports = {
     }
   }, {
     port: 8081,
+
     options: {
+      cors: true,
       labels: 'dictionary-web',
     }
   }],
@@ -97,6 +100,11 @@ module.exports = {
         //vhost : dic.local
       }
     }],
+    '../../../plugins/dictionary-error': [{
+      options: {
+        source: "LeBrisouBackend"
+      }
+    }],
     '../../../plugins/dictionary-web': [{
       options: {
         sitename: 'LeBrisouBackend',
@@ -112,11 +120,6 @@ module.exports = {
         output: __dirname + '/assets/output/excel_dump.json'
       },
       select: ['dictionary-api']
-    }],
-    '../../../plugins/dictionary-error': [{
-      options: {
-        source: "LeBrisouBackend"
-      }
     }],
   }
 }
